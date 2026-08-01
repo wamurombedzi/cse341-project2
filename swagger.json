@@ -5,7 +5,7 @@
     "description": "Schools Api",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project2-4y4r.onrender.com",
+  "host": "cse341-project2-4y4r.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
