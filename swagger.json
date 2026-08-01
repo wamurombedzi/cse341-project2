@@ -5,7 +5,7 @@
     "description": "Schools Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://cse341-project2-4y4r.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
@@ -21,16 +21,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
