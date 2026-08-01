@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=['contacts']
+  //#swagger.tags=['schools']
   const result = await mongodb.getDatabase().db('project2').collection('schools').find();
   result.toArray().then((schools) => {
     res.setHeader('Content-Type', 'application/json');
@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
-  //#swagger.tags=['contacts']
+  //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id)
   const result = await mongodb.getDatabase().db('project2').collection('schools').find({ _id: schoolsId });
   result.toArray().then((schools) => {
@@ -21,7 +21,7 @@ const getSingle = async (req, res) => {
 };
 
 const createSchools = async (req, res) => {
-  //#swagger.tags=['contacts']
+  //#swagger.tags=['schools']
   const schools = {
     school_name: req.body.school_name,
     address: req.body.address,
@@ -37,15 +37,15 @@ const createSchools = async (req, res) => {
 }
 
 const updateSchools = async (req, res) => {
-  //#swagger.tags=['contacts']
+  //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id);
-  const school = {
+  const schools = {
     school_name: req.body.school_name,
     address: req.body.address,
     established_year: req.body.established_year,
     type: req.body.type,
   };
-  const response = await mongodb.getDatabase().db().collection('schools').replaceOne({ _id: schoolsId }, contact);
+  const response = await mongodb.getDatabase().db().collection('schools').replaceOne({ _id: schoolsId }, schools);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
@@ -54,7 +54,7 @@ const updateSchools = async (req, res) => {
 }
 
 const deleteSchools = async (req, res) => {
-  //#swagger.tags=['contacts']
+  //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id);
   const response = await mongodb.getDatabase().db().collection('schools').deleteOne({ _id: schoolsId });
   if (response.deletedCount > 0) {

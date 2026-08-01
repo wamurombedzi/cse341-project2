@@ -1,0 +1,79 @@
+// LOCALHOST
+### Get all schools
+GET http://localhost:3000/schools
+
+
+### Get schools by id
+GET http://localhost:3000/schools/6a6d1fa58149bb744c28182c
+
+
+### Create schools
+POST http://localhost:3000/schools HTTP/1.1
+content-type: application/json
+
+{
+  "school_name": "Eunice High",
+  "address": {
+    "street": "Slendale",
+    "city": "Mount Pleasant",
+    "state": "Mashonaland",
+    "zip": "1976"
+  },
+  "established_year": 1995,
+  "type": "private"
+}
+
+
+### Put schools
+PUT http://localhost:3000/schools/6a6d1fa58149bb744c28182c HTTP/1.1
+content-type: application/json
+
+{
+  "school_name": "Eunice High",
+  "address": {
+    "street": "Slendale",
+    "city": "Mount Pleasant",
+    "state": "Mashonaland",
+    "zip": "1976"
+  },
+  "established_year": 1995,
+  "type": "private"
+}
+
+### Delete schools
+DELETE http://localhost:3000/schools/6a00ddd6b4618bb08d4c59e4 HTTP/1.1
+
+### Get all schools
+GET http://localhost:3000/schools
+
+
+### Get schools by id
+GET http://localhost:3000/schools/6a5eb5b44dbc17c4d5ad7460
+
+
+### Create schools
+POST http://localhost:3000/schools HTTP/1.1
+content-type: application/json
+
+{ 
+    "email": "test4@example.com",
+    "username": "test4@test.com",
+    "name": "Hello1",
+    "ipaddress": "94.121.168.53"
+    
+}
+
+
+### Put schools
+PUT http://localhost:3000/schools/6a5eb5b44dbc17c4d5ad7460 HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test4@example.com",
+    "username": "test4@test.com",
+    "name": "Hello1",
+    "ipaddress": "94.121.168.53"
+}
+
+### Delete schools
+DELETE http://localhost:3000/schools/6a5eb5b44dbc17c4d5ad7460 HTTP/1.1
