@@ -3,22 +3,37 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
   //#swagger.tags=['students]
-  const result = await mongodb.getDatabase().db('project2').collection('students').find();
-  result.toArray().then((students) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(students);
-  });
+  mongodb
+    .getDatabase()
+    .db('project2')
+    .collection('students')
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({message: err});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
 };
-
-const getSingle = async (req, res) => {
-  //#swagger.tags=['students]
-  const studentsId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db('project2').collection('students').find({_id: studentsId});
-  result.toArray().then((students) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(students[0]);
-  });
-};
+ 
+ const getSingle = async (req, res) => {
+   //#swagger.tags=['students']
+   const schoolsId = new ObjectId(req.params.id)
+   mongodb
+     .getDatabase()
+     .db('project2')
+     .collection('students')
+     .find({ _id: studentsId })
+     .toArray((err, result) => {
+        if (err) {
+          res.status(400).json({message: err});
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(result[0]);
+      });
+ };
+ 
 
 const createStudents = async (req, res) => {
   //#swagger.tags=['students]

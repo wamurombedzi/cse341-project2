@@ -3,21 +3,35 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
   //#swagger.tags=['schools']
-  const result = await mongodb.getDatabase().db('project2').collection('schools').find();
-  result.toArray().then((schools) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(schools);
-  });
+  mongodb
+    .getDatabase()
+    .db('project2')
+    .collection('schools')
+    .find()
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({message: err});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
 };
 
 const getSingle = async (req, res) => {
   //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id)
-  const result = await mongodb.getDatabase().db('project2').collection('schools').find({ _id: schoolsId });
-  result.toArray().then((schools) => {
-
-    res.status(200).json(schools[0]);
-  });
+  mongodb
+    .getDatabase()
+    .db('project2')
+    .collection('schools')
+    .find({ _id: schoolsId })
+    .toArray((err, result) => {
+      if (err) {
+        res.status(400).json({message: err});
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
+    });
 };
 
 const createSchools = async (req, res) => {
