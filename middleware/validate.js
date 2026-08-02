@@ -11,7 +11,7 @@ const saveSchools = (req, res, next) => {
     if (!status) {
       res.status(412).send({
         success: false,
-        message: 'Validation failed: ' + JSON.stringify(err),
+        message: 'Validation failed' ,
         data: err
       });
     } else {
@@ -34,7 +34,7 @@ const saveStudents = (req, res, next) => {
     if (!status) {
       res.status(412).send({
         success: false,
-        message: 'Validation failed: ' + JSON.stringify(err),
+        message: 'Validation failed' ,
         data: err
       });
     } else {

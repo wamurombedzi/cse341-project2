@@ -18,6 +18,9 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid schools id to get schools.');
+  }
   //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id)
   mongodb
@@ -51,6 +54,9 @@ const createSchools = async (req, res) => {
 }
 
 const updateSchools = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid schools id to update schools.');
+  }
   //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id);
   const schools = {
@@ -68,6 +74,9 @@ const updateSchools = async (req, res) => {
 }
 
 const deleteSchools = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid schools id to delete schools.');
+  }
   //#swagger.tags=['schools']
   const schoolsId = new ObjectId(req.params.id);
   const response = await mongodb.getDatabase().db().collection('schools').deleteOne({ _id: schoolsId });
