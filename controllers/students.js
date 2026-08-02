@@ -1,3 +1,4 @@
+
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -47,11 +48,11 @@ const createStudents = async (req, res) => {
     grade_level: req.body.grade_level,
     gpa: req.body.gpa,
     enrollment: req.body.enrollment,
-    subjects: req.body.subjects
+    subjects: req.body.subjects,
   };
   const response = await mongodb.getDatabase().db().collection('students').insertOne(students);
   if (response.acknowledged) {
-    res.stautus(204).send();
+    res.status(204).send();
  } else {
   res.status(500).json(response.error || 'Some error occurred while updating the students.');
  }

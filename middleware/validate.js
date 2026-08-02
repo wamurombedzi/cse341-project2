@@ -34,7 +34,7 @@ const saveStudents = (req, res, next) => {
     if (!status) {
       res.status(412).send({
         success: false,
-        message: 'Validation failed' ,
+        message: 'Validation failed',
         data: err
       });
     } else {
