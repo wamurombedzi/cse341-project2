@@ -19,7 +19,7 @@ const getAll = async (req, res) => {
  
  const getSingle = async (req, res) => {
    //#swagger.tags=['students']
-   const schoolsId = new ObjectId(req.params.id)
+   const studentsId = new ObjectId(req.params.id)
    mongodb
      .getDatabase()
      .db('project2')
