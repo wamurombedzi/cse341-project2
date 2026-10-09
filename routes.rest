@@ -1,0 +1,37 @@
+// LOCALHOST
+### Get all magazine
+GET http://localhost:3000/magazine
+
+
+### Get contact by id
+GET http://localhost:3000/magazine/6ac814b28581e62d5bc7e2f2
+
+### Create magazine
+POST http://localhost:3000/magazine HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Wa Dune",
+    "publisher": "Chilton Books",
+    "genre": "Sci-Fi",
+    "price": "18.00",
+    "releaseDate": "1965-08-21",
+    "availableCopies": "5"
+}
+
+### PUT magazine
+PUT http://localhost:3000/magazine/6ac814b28581e62d5bc7e2f2 HTTP/1.1
+content-type: application/json
+
+{
+    
+    "title": "Wa Dune",
+    "publisher": "Chilton Books",
+    "genre": "Sci-Fi",
+    "price": "18.00",
+    "releaseDate": "1965-08-21",
+    "availableCopies": "5"
+}
+
+### DELETE contact
+DELETE http://localhost:3000/magazine/6ac94baa2732b11782cd1923 HTTP/1.1

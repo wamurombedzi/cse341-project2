@@ -18,7 +18,58 @@ const getSingle = async (req, res) => {
     });
 };
 
+const createCustomer = async (req, res) => {
+    //#swagger.tags=['customer']
+    const customerId = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        subscriptionPlan: req.body.subscriptionPlan,
+        joinedDate: req.body.joinedDate,
+        magazineSubscriber: req.body.magazineSubscriber
+    };
+    const response = await mongodb.getDatabase().db().collection('customer').insertOne(customer);
+    if (response.acknowledged) {
+        res.status(204).send();
+    } else {
+        res.status(500). json(response.error || "Some error occurred while adding the customer.");
+    }
+}
+
+const updateCustomer = async (req, res) => {
+    //#swagger.tags=['customer']
+    const customerId = new ObjectId(req.params.id);
+    const customer = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        subscriptionPlan: req.body.subscriptionPlan,
+        joinedDate: req.body.joinedDate,
+        magazineSubscriber: req.body.magazineSubscriber
+    };
+    const response = await mongodb.getDatabase().db().collection('customer').replaceOne({ _id: customerId }, customer);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500). json(response.error || "Some error occurred while updating the customer.");
+    }
+}
+
+const deleteCustomer = async (req, res) => {
+    //#swagger.tags=['customer']
+    const customerId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('customer').deleteOne({ _id: customerId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500). json(response.error || "Some error occurred while deleting the customer.");
+    }
+}
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createCustomer,
+    updateCustomer,
+    deleteCustomer
 };
